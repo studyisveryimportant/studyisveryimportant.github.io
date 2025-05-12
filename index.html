@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML Games Collection</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2em; background: #f4f4f4; }
+    h1 { text-align: center; margin-bottom: 40px; }
+    .game-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .game-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 200px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .game-card:hover {
+      transform: translateY(-5px);
+    }
+    a {
+      text-decoration: none;
+      color: #007acc;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>My HTML Games Collection</h1>
+  <div class="game-list">
+    <div class="game-card"><a href="10-minutes-till-dawn/">10 Minutes Till Dawn</a></div>
+    <div class="game-card"><a href="2048/">2048</a></div>
+    <div class="game-card"><a href="Angry-Birds/">Angry Birds</a></div>
+    <div class="game-card"><a href="Cut-the-Rope/">Cut the Rope</a></div>
+    <div class="game-card"><a href="getting-over-it/">Getting Over It</a></div>
+    <div class="game-card"><a href="Stack/">Stack</a></div>
+    <div class="game-card"><a href="T-Rex-Rush/">T-Rex Rush</a></div>
+    <div class="game-card"><a href="Space-Shooter/">Space Shooter</a></div>
+    <!-- Add more games as needed -->
+  </div>
+</body>
+</html>
