@@ -1,149 +1,470 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Game Hub</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #222;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-    .game-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-      padding: 20px;
-    }
-    .game-list a {
-      display: block;
-      background: #333;
-      padding: 12px;
-      text-align: center;
-      text-decoration: none;
-      color: #fff;
-      border-radius: 6px;
-      transition: background 0.2s;
-    }
-    .game-list a:hover {
-      background: #555;
-    }
-    footer {
-      text-align: center;
-      padding: 10px;
-      background: #222;
-      color: #aaa;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>studyisveryimportant</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+        }
+        header {
+            background-color: #1f1f1f;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+            padding: 20px;
+        }
+        .game-card {
+            background-color: #282828;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .game-card:hover {
+            transform: scale(1.05);
+            background-color: #3a3a3a;
+        }
+    </style>
 </head>
 <body>
-
-<header>
-  <h1>Welcome to the Game Hub</h1>
-  <p>Click a game below to play</p>
-</header>
-
-<main class="game-list" id="gameList">
-  <!-- Game links will be injected here -->
-</main>
-
-<footer>
-  &copy; 2025 Game Hub | Hosted on GitHub Pages
-</footer>
-
-<script>
-  const games = [
-    "1", "10-minutes-till-dawn", "100ng", "1v1lol", "1v1space", "2020-game", "2048-multitask", "2048",
-    "8ball-billards-classic", "9007199254740992", "DogeMiner", "FullScreenMario", "HexGL", "OfflineParadise",
-    "Squid Gun Fest", "Stickman-Survival", "achievementunlocked", "adarkroom", "adrenalinechallenge",
-    "age-of-war", "alien-invaders-io", "alienhominid", "align-4", "among-us", "angry-birds",
-    "anti-terrorist-rush", "arcade-wizard", "asciispace", "aspiring-artist", "asteroids", "astray",
-    "avalanche", "awesome-tanks-2", "backcountry", "backflip-dive-3d", "backrooms", "bad-ice-cream-2",
-    "bad-ice-cream-3", "bad-ice-cream", "baldis-basics", "basket-bros-io", "basketball-io",
-    "basketball-legends-2020", "basketball-stars", "battleforgondor", "bigredbutton", "binding-of-isaac",
-    "bitlife", "blacholesquare", "blackholesquare", "blackknight", "blocky-snakes", "bloonstd", "bloonstd2",
-    "bloxors", "bounceback", "boxel-rebound", "boxhead2play", "brave-explorers", "breakingthebank",
-    "breaklock", "breakout", "btd4", "btts", "burning-man-2", "cannon-basketball-4", "canyondefense",
-    "captaincallisto", "cars-simulator", "cell-machine", "championarcher", "chess", "chill-radio",
-    "chromaincident", "chrome-dino", "chromedino", "circlo", "city-blocks-2", "clean-up-io", "cluster-rush",
-    "color-switch-2-challenges", "connect3", "cookie-clicker", "cookieclicker", "core-ball", "craftmine",
-    "creativekillchamber", "crossyroad", "crowd city 2", "csgo-clicker", "ctr-holiday", "ctr-tr", "ctr",
-    "cubefield", "cupcake2048", "cuttherope", "cuttherope2", "dadish", "dadish3", "dadishtwo", "dante",
-    "deal-or-no-deal", "death-run-3d", "death-soul", "deathrun", "defend-the-tank", "dino", "doctor-acorn2",
-    "dodge", "doge-miner-2", "doge-mining-simulator", "doge2048", "dont-drop-the-white-ball-2",
-    "doodle-jump", "doublewires", "douchebag-workout-2", "dragon-vs-bricks", "draw-the-hill", "drive-mad",
-    "duck-life-treasurehunt", "ducklife", "ducklife1", "ducklife2", "ducklife3", "ducklife4",
-    "duke-dashington-remastered", "dungeon-craft", "edge-surf", "edgenotfound", "elastic-face", "elasticman",
-    "emulator-js", "endlesswar3", "escapingtheprison", "evil-glitch", "evilglitch", "evolution", "exo",
-    "factory-balls-forever", "factoryballs", "factoryballsforever", "fake-virus", "fancypantsadventures",
-    "fbwg", "finns-fantastic-food-machine", "fireboywatergirlforesttemple", "fireice", "firewater",
-    "flappy-2048", "flappy-bird", "flappy-defense", "flappybird", "flashtetris", "flippy-fish",
-    "flood-runner-2", "fridaynightfunkin", "friendlyfire", "froggys-battle", "fruitninja", "frying-nemo",
-    "game-inside", "generic-fishing-game", "geodash-2", "geodash", "geometry_jump_sketchy", "geometrydash",
-    "georgeandtheprinter", "getaway-shootout", "getting-over-it", "gimme-the-airpod", "glass-city", "go-ball",
-    "golf", "goodnight", "google-snake", "google-solitaire", "gopher", "gravity-soccer", "green", "greybox",
-    "grindcraft", "grow-in-the-hole", "gun-mayhem-2", "gun-mayhem-redux", "gun-mayhem", "gunspin",
-    "hackertype", "happy-hop", "happy-wheels", "hba", "helicopter", "helios", "hexempire", "hextris",
-    "house-of-hazards", "icys-purple-head", "idle-breakout", "idle-shark", "impossiblequiz",
-    "interactivebuddy", "iscribble-io", "jelly-truck", "jetpack", "jimothy-piggerton", "just-one-boss",
-    "justfall", "kart-fight-io", "kitchen-gun-game", "kittencannon", "klocki", "konnekt", "krunker",
-    "learntofly", "learntofly2", "line-rider", "linquest", "madalin-stunt-cars-2", "madalin-stunt-cars-3",
-    "makeitmeme", "mario", "marvinspectrum", "matrixrampage", "mc1.5.2", "mcbeta0.30", "mcbeta1.3",
-    "meat-boy", "meme2048", "minecraft-classic", "minecraft", "minecraftbeta", "minesweeper", "mini-stilts",
-    "miniputt", "missiles", "moto-x3m-2", "moto-x3m-pool-party", "motox3m-pool", "motox3m-spooky",
-    "motox3m-winter", "motox3m", "motox3m2", "motox3mwinter", "my-friend-pedro", "n-gon", "ninja",
-    "ninjavsevilcorp", "ns-shaft", "om-bounce", "one-screen-run-2", "one-screen-run", "osu", "ovo",
-    "packabunchas", "pacman-fps", "pacman", "pandemic2", "papa-louie", "papas-burgeria", "papas-freezeria",
-    "papas-hot-doggeria", "papas-pancakeria", "papas-pizzeria", "papas-sushiria", "papas-wingeria",
-    "papasburgeria", "papaspizzaria", "paperio2", "papery-planes", "particle-clicker", "particleclicker",
-    "path-finder", "pe-noire", "pikwip", "pixel-cave", "pizzeria-simulator", "polybranch", "popcat-classic",
-    "portalflash", "precision-client", "protektor", "push-the-square", "push-your-luck", "pushback",
-    "puzzle-ball", "pvz-2", "q1k3", "racer", "radiusraid", "retro-bowl", "retrobowl", "retrohaunt",
-    "rise-of-neon-square", "roadblocks", "rocking-sky-trip", "rolling-forests", "rolly-vortex",
-    "rooftop-snipers", "run-3", "run3", "sand-game", "sandboxels", "scrambled-eggs", "scrapmetal",
-    "senya-and-oscar-2", "sg", "shadow-world-adventure", "shards", "shift-flash-2", "shift-flash",
-    "short-life-2", "short-ride", "shuttledeck", "skyblock", "sleepingbeauty", "slice-of-sasha",
-    "slither snake", "slither", "slope-ball", "slope", "slope2", "sm63", "sm64", "smashkarts",
-    "smokingbarrels", "snake", "snowbattle", "soldier-legend", "solitaire", "sonic-the-hedgehog",
-    "sort-the-court", "soundboard", "space-company", "spacecompany", "spacegarden", "spacehuggers",
-    "spelunky", "ssf", "stack-bump-3d", "stack", "station-141", "stealingthediamond",
-    "stick-archers-battle", "stickclimb", "stickman-boost", "stickman-dismount", "stickman-epic-battle",
-    "stickman-golf", "stickman", "stickwar", "stormthehouse2", "subway-surfers-bali", "subway-surfers",
-    "super-mario-maker-online", "super-puffer-fish-3d", "superhero-io", "superhot", "supermarioconstruct",
-    "swerve", "synesthesia", "tactical-weapon-pack-2", "tacticalassasin2", "tail-of-the-dragon",
-    "tam-indian-truck-simulator-3d", "tank-trouble-2", "tanuki-sunset", "temple-run-2", "tetris",
-    "the-final-earth-2", "the-final-earth", "the-impossible-quiz-2", "the-impossible-quiz",
-    "the-little-giant", "thebattle", "theheist", "themazeofspacegoblins", "there-is-no-game",
-    "thisistheonlylevel", "time-shooter-3", "tiny-fishing", "tiny-fragments", "tiny-islands",
-    "topple-adventure", "tosstheturtle", "tough-growth", "towermaster", "townscaper", "trimps",
-    "tube-jumpers", "tunnel-rush", "tunnelz", "tv-static", "twitch-tetris", "underrun", "unfold-2",
-    "up-left-out", "veloce", "vex3", "vex4", "vex5", "vex6", "vex7", "waterworks", "webretro",
-    "winter-falling-price", "wipo", "wolf3d", "wordle", "worlds-hardest-game-2", "worlds-hardest-game",
-    "x-trial-racing", "xx142-b2exe", "yoshifabrication", "you-are-bezos", "zig-zag", "zombocalypse",
-    "zombs-royale"
-  ];
-
-  const container = document.getElementById("gameList");
-
-  games.sort((a, b) => a.localeCompare(b)).forEach(game => {
-    const link = document.createElement('a');
-    link.href = `${game}/index.html`;
-    link.textContent = game.replace(/-/g, ' ');
-    container.appendChild(link);
-  });
-</script>
-
+    <header>
+        <h1>studyisveryimportant</h1>
+        <p>Click a game to begin your... study.</p>
+    </header>
+    <div class="game-container">
+        <a href="1/" class="game-card">1</a>
+<a href="10-minutes-till-dawn/" class="game-card">10 Minutes Till Dawn</a>
+<a href="100ng/" class="game-card">100Ng</a>
+<a href="1v1lol/" class="game-card">1V1Lol</a>
+<a href="1v1space/" class="game-card">1V1Space</a>
+<a href="2020-game/" class="game-card">2020 Game</a>
+<a href="2048-multitask/" class="game-card">2048 Multitask</a>
+<a href="2048/" class="game-card">2048</a>
+<a href="8ball-billards-classic/" class="game-card">8Ball Billards Classic</a>
+<a href="9007199254740992/" class="game-card">9007199254740992</a>
+<a href="DogeMiner/" class="game-card">Dogeminer</a>
+<a href="FullScreenMario/" class="game-card">Fullscreenmario</a>
+<a href="HexGL/" class="game-card">Hexgl</a>
+<a href="OfflineParadise/" class="game-card">Offlineparadise</a>
+<a href="Squid Gun Fest/" class="game-card">Squid Gun Fest</a>
+<a href="Stickman-Survival/" class="game-card">Stickman Survival</a>
+<a href="achievementunlocked/" class="game-card">Achievementunlocked</a>
+<a href="adarkroom/" class="game-card">Adarkroom</a>
+<a href="adrenalinechallenge/" class="game-card">Adrenalinechallenge</a>
+<a href="age-of-war/" class="game-card">Age Of War</a>
+<a href="alien-invaders-io/" class="game-card">Alien Invaders Io</a>
+<a href="alienhominid/" class="game-card">Alienhominid</a>
+<a href="align-4/" class="game-card">Align 4</a>
+<a href="among-us/" class="game-card">Among Us</a>
+<a href="angry-birds/" class="game-card">Angry Birds</a>
+<a href="anti-terrorist-rush/" class="game-card">Anti Terrorist Rush</a>
+<a href="arcade-wizard/" class="game-card">Arcade Wizard</a>
+<a href="asciispace/" class="game-card">Asciispace</a>
+<a href="aspiring-artist/" class="game-card">Aspiring Artist</a>
+<a href="asteroids/" class="game-card">Asteroids</a>
+<a href="astray/" class="game-card">Astray</a>
+<a href="avalanche/" class="game-card">Avalanche</a>
+<a href="awesome-tanks-2/" class="game-card">Awesome Tanks 2</a>
+<a href="backcountry/" class="game-card">Backcountry</a>
+<a href="backflip-dive-3d/" class="game-card">Backflip Dive 3D</a>
+<a href="backrooms/" class="game-card">Backrooms</a>
+<a href="bad-ice-cream-2/" class="game-card">Bad Ice Cream 2</a>
+<a href="bad-ice-cream-3/" class="game-card">Bad Ice Cream 3</a>
+<a href="bad-ice-cream/" class="game-card">Bad Ice Cream</a>
+<a href="baldis-basics/" class="game-card">Baldis Basics</a>
+<a href="basket-bros-io/" class="game-card">Basket Bros Io</a>
+<a href="basketball-io/" class="game-card">Basketball Io</a>
+<a href="basketball-legends-2020/" class="game-card">Basketball Legends 2020</a>
+<a href="basketball-stars/" class="game-card">Basketball Stars</a>
+<a href="battleforgondor/" class="game-card">Battleforgondor</a>
+<a href="bigredbutton/" class="game-card">Bigredbutton</a>
+<a href="binding-of-isaac/" class="game-card">Binding Of Isaac</a>
+<a href="bitlife/" class="game-card">Bitlife</a>
+<a href="blacholesquare/" class="game-card">Blacholesquare</a>
+<a href="blackholesquare/" class="game-card">Blackholesquare</a>
+<a href="blackknight/" class="game-card">Blackknight</a>
+<a href="blocky-snakes/" class="game-card">Blocky Snakes</a>
+<a href="bloonstd/" class="game-card">Bloonstd</a>
+<a href="bloonstd2/" class="game-card">Bloonstd2</a>
+<a href="bloxors/" class="game-card">Bloxors</a>
+<a href="bounceback/" class="game-card">Bounceback</a>
+<a href="boxel-rebound/" class="game-card">Boxel Rebound</a>
+<a href="boxhead2play/" class="game-card">Boxhead2Play</a>
+<a href="brave-explorers/" class="game-card">Brave Explorers</a>
+<a href="breakingthebank/" class="game-card">Breakingthebank</a>
+<a href="breaklock/" class="game-card">Breaklock</a>
+<a href="breakout/" class="game-card">Breakout</a>
+<a href="btd4/" class="game-card">Btd4</a>
+<a href="btts/" class="game-card">Btts</a>
+<a href="burning-man-2/" class="game-card">Burning Man 2</a>
+<a href="cannon-basketball-4/" class="game-card">Cannon Basketball 4</a>
+<a href="canyondefense/" class="game-card">Canyondefense</a>
+<a href="captaincallisto/" class="game-card">Captaincallisto</a>
+<a href="cars-simulator/" class="game-card">Cars Simulator</a>
+<a href="cell-machine/" class="game-card">Cell Machine</a>
+<a href="championarcher/" class="game-card">Championarcher</a>
+<a href="chess/" class="game-card">Chess</a>
+<a href="chill-radio/" class="game-card">Chill Radio</a>
+<a href="chromaincident/" class="game-card">Chromaincident</a>
+<a href="chrome-dino/" class="game-card">Chrome Dino</a>
+<a href="chromedino/" class="game-card">Chromedino</a>
+<a href="circlo/" class="game-card">Circlo</a>
+<a href="city-blocks-2/" class="game-card">City Blocks 2</a>
+<a href="clean-up-io/" class="game-card">Clean Up Io</a>
+<a href="cluster-rush/" class="game-card">Cluster Rush</a>
+<a href="color-switch-2-challenges/" class="game-card">Color Switch 2 Challenges</a>
+<a href="connect3/" class="game-card">Connect3</a>
+<a href="cookie-clicker/" class="game-card">Cookie Clicker</a>
+<a href="cookieclicker/" class="game-card">Cookieclicker</a>
+<a href="core-ball/" class="game-card">Core Ball</a>
+<a href="craftmine/" class="game-card">Craftmine</a>
+<a href="creativekillchamber/" class="game-card">Creativekillchamber</a>
+<a href="crossyroad/" class="game-card">Crossyroad</a>
+<a href="crowd city 2/" class="game-card">Crowd City 2</a>
+<a href="csgo-clicker/" class="game-card">Csgo Clicker</a>
+<a href="css/" class="game-card">Css</a>
+<a href="js/" class="game-card">Js</a>
+<a href="ctr-holiday/" class="game-card">Ctr Holiday</a>
+<a href="ctr-tr/" class="game-card">Ctr Tr</a>
+<a href="ctr/" class="game-card">Ctr</a>
+<a href="cubefield/" class="game-card">Cubefield</a>
+<a href="cupcake2048/" class="game-card">Cupcake2048</a>
+<a href="cuttherope/" class="game-card">Cuttherope</a>
+<a href="cuttherope2/" class="game-card">Cuttherope2</a>
+<a href="dadish/" class="game-card">Dadish</a>
+<a href="dadish3/" class="game-card">Dadish3</a>
+<a href="dadishtwo/" class="game-card">Dadishtwo</a>
+<a href="dante/" class="game-card">Dante</a>
+<a href="deal-or-no-deal/" class="game-card">Deal Or No Deal</a>
+<a href="death-run-3d/" class="game-card">Death Run 3D</a>
+<a href="death-soul/" class="game-card">Death Soul</a>
+<a href="deathrun/" class="game-card">Deathrun</a>
+<a href="defend-the-tank/" class="game-card">Defend The Tank</a>
+<a href="dino/" class="game-card">Dino</a>
+<a href="doctor-acorn2/" class="game-card">Doctor Acorn2</a>
+<a href="dodge/" class="game-card">Dodge</a>
+<a href="doge-miner-2/" class="game-card">Doge Miner 2</a>
+<a href="doge-mining-simulator/" class="game-card">Doge Mining Simulator</a>
+<a href="doge2048/" class="game-card">Doge2048</a>
+<a href="dont-drop-the-white-ball-2/" class="game-card">Dont Drop The White Ball 2</a>
+<a href="doodle-jump/" class="game-card">Doodle Jump</a>
+<a href="doublewires/" class="game-card">Doublewires</a>
+<a href="douchebag-workout-2/" class="game-card">Douchebag Workout 2</a>
+<a href="dragon-vs-bricks/" class="game-card">Dragon Vs Bricks</a>
+<a href="draw-the-hill/" class="game-card">Draw The Hill</a>
+<a href="drive-mad/" class="game-card">Drive Mad</a>
+<a href="duck-life-treasurehunt/" class="game-card">Duck Life Treasurehunt</a>
+<a href="ducklife/" class="game-card">Ducklife</a>
+<a href="ducklife1/" class="game-card">Ducklife1</a>
+<a href="ducklife2/" class="game-card">Ducklife2</a>
+<a href="ducklife3/" class="game-card">Ducklife3</a>
+<a href="ducklife4/" class="game-card">Ducklife4</a>
+<a href="duke-dashington-remastered/" class="game-card">Duke Dashington Remastered</a>
+<a href="dungeon-craft/" class="game-card">Dungeon Craft</a>
+<a href="edge-surf/" class="game-card">Edge Surf</a>
+<a href="edgenotfound/" class="game-card">Edgenotfound</a>
+<a href="elastic-face/" class="game-card">Elastic Face</a>
+<a href="elasticman/" class="game-card">Elasticman</a>
+<a href="emulator-js/" class="game-card">Emulator Js</a>
+<a href="endlesswar3/" class="game-card">Endlesswar3</a>
+<a href="escapingtheprison/" class="game-card">Escapingtheprison</a>
+<a href="evil-glitch/" class="game-card">Evil Glitch</a>
+<a href="evilglitch/" class="game-card">Evilglitch</a>
+<a href="evolution/" class="game-card">Evolution</a>
+<a href="exo/" class="game-card">Exo</a>
+<a href="factory-balls-forever/" class="game-card">Factory Balls Forever</a>
+<a href="factoryballs/" class="game-card">Factoryballs</a>
+<a href="factoryballsforever/" class="game-card">Factoryballsforever</a>
+<a href="fake-virus/" class="game-card">Fake Virus</a>
+<a href="fancypantsadventures/" class="game-card">Fancypantsadventures</a>
+<a href="fbwg/" class="game-card">Fbwg</a>
+<a href="finns-fantastic-food-machine/" class="game-card">Finns Fantastic Food Machine</a>
+<a href="fireboywatergirlforesttemple/" class="game-card">Fireboywatergirlforesttemple</a>
+<a href="fireice/" class="game-card">Fireice</a>
+<a href="firewater/" class="game-card">Firewater</a>
+<a href="flappy-2048/" class="game-card">Flappy 2048</a>
+<a href="flappy-bird/" class="game-card">Flappy Bird</a>
+<a href="flappy-defense/" class="game-card">Flappy Defense</a>
+<a href="flappybird/" class="game-card">Flappybird</a>
+<a href="flashtetris/" class="game-card">Flashtetris</a>
+<a href="flippy-fish/" class="game-card">Flippy Fish</a>
+<a href="flood-runner-2/" class="game-card">Flood Runner 2</a>
+<a href="fridaynightfunkin/" class="game-card">Fridaynightfunkin</a>
+<a href="friendlyfire/" class="game-card">Friendlyfire</a>
+<a href="froggys-battle/" class="game-card">Froggys Battle</a>
+<a href="fruitninja/" class="game-card">Fruitninja</a>
+<a href="frying-nemo/" class="game-card">Frying Nemo</a>
+<a href="game-inside/" class="game-card">Game Inside</a>
+<a href="generic-fishing-game/" class="game-card">Generic Fishing Game</a>
+<a href="geodash-2/" class="game-card">Geodash 2</a>
+<a href="geodash/" class="game-card">Geodash</a>
+<a href="geometry_jump_sketchy/" class="game-card">Geometry_Jump_Sketchy</a>
+<a href="geometrydash/" class="game-card">Geometrydash</a>
+<a href="georgeandtheprinter/" class="game-card">Georgeandtheprinter</a>
+<a href="getaway-shootout/" class="game-card">Getaway Shootout</a>
+<a href="getting-over-it/" class="game-card">Getting Over It</a>
+<a href="gimme-the-airpod/" class="game-card">Gimme The Airpod</a>
+<a href="glass-city/" class="game-card">Glass City</a>
+<a href="go-ball/" class="game-card">Go Ball</a>
+<a href="golf/" class="game-card">Golf</a>
+<a href="goodnight/" class="game-card">Goodnight</a>
+<a href="google-snake/" class="game-card">Google Snake</a>
+<a href="google-solitaire/" class="game-card">Google Solitaire</a>
+<a href="gopher/" class="game-card">Gopher</a>
+<a href="gravity-soccer/" class="game-card">Gravity Soccer</a>
+<a href="green/" class="game-card">Green</a>
+<a href="greybox/" class="game-card">Greybox</a>
+<a href="grindcraft/" class="game-card">Grindcraft</a>
+<a href="grow-in-the-hole/" class="game-card">Grow In The Hole</a>
+<a href="gun-mayhem-2/" class="game-card">Gun Mayhem 2</a>
+<a href="gun-mayhem-redux/" class="game-card">Gun Mayhem Redux</a>
+<a href="gun-mayhem/" class="game-card">Gun Mayhem</a>
+<a href="gunspin/" class="game-card">Gunspin</a>
+<a href="hackertype/" class="game-card">Hackertype</a>
+<a href="happy-hop/" class="game-card">Happy Hop</a>
+<a href="happy-wheels/" class="game-card">Happy Wheels</a>
+<a href="hba/" class="game-card">Hba</a>
+<a href="helicopter/" class="game-card">Helicopter</a>
+<a href="helios/" class="game-card">Helios</a>
+<a href="hexempire/" class="game-card">Hexempire</a>
+<a href="hextris/" class="game-card">Hextris</a>
+<a href="house-of-hazards/" class="game-card">House Of Hazards</a>
+<a href="icys-purple-head/" class="game-card">Icys Purple Head</a>
+<a href="idle-breakout/" class="game-card">Idle Breakout</a>
+<a href="idle-shark/" class="game-card">Idle Shark</a>
+<a href="impossiblequiz/" class="game-card">Impossiblequiz</a>
+<a href="interactivebuddy/" class="game-card">Interactivebuddy</a>
+<a href="iscribble-io/" class="game-card">Iscribble Io</a>
+<a href="jelly-truck/" class="game-card">Jelly Truck</a>
+<a href="jetpack/" class="game-card">Jetpack</a>
+<a href="jimothy-piggerton/" class="game-card">Jimothy Piggerton</a>
+<a href="just-one-boss/" class="game-card">Just One Boss</a>
+<a href="justfall/" class="game-card">Justfall</a>
+<a href="kart-fight-io/" class="game-card">Kart Fight Io</a>
+<a href="kitchen-gun-game/" class="game-card">Kitchen Gun Game</a>
+<a href="kittencannon/" class="game-card">Kittencannon</a>
+<a href="klocki/" class="game-card">Klocki</a>
+<a href="konnekt/" class="game-card">Konnekt</a>
+<a href="krunker/" class="game-card">Krunker</a>
+<a href="learntofly/" class="game-card">Learntofly</a>
+<a href="learntofly2/" class="game-card">Learntofly2</a>
+<a href="line-rider/" class="game-card">Line Rider</a>
+<a href="linquest/" class="game-card">Linquest</a>
+<a href="madalin-stunt-cars-2/" class="game-card">Madalin Stunt Cars 2</a>
+<a href="madalin-stunt-cars-3/" class="game-card">Madalin Stunt Cars 3</a>
+<a href="makeitmeme/" class="game-card">Makeitmeme</a>
+<a href="mario/" class="game-card">Mario</a>
+<a href="marvinspectrum/" class="game-card">Marvinspectrum</a>
+<a href="matrixrampage/" class="game-card">Matrixrampage</a>
+<a href="meat-boy/" class="game-card">Meat Boy</a>
+<a href="meme2048/" class="game-card">Meme2048</a>
+<a href="minecraft-classic/" class="game-card">Minecraft Classic</a>
+<a href="minecraft/" class="game-card">Minecraft</a>
+<a href="minecraftbeta/" class="game-card">Minecraftbeta</a>
+<a href="minesweeper/" class="game-card">Minesweeper</a>
+<a href="mini-stilts/" class="game-card">Mini Stilts</a>
+<a href="miniputt/" class="game-card">Miniputt</a>
+<a href="missiles/" class="game-card">Missiles</a>
+<a href="moto-x3m-2/" class="game-card">Moto X3M 2</a>
+<a href="moto-x3m-pool-party/" class="game-card">Moto X3M Pool Party</a>
+<a href="motox3m-pool/" class="game-card">Motox3M Pool</a>
+<a href="motox3m-spooky/" class="game-card">Motox3M Spooky</a>
+<a href="motox3m-winter/" class="game-card">Motox3M Winter</a>
+<a href="motox3m/" class="game-card">Motox3M</a>
+<a href="motox3m2/" class="game-card">Motox3M2</a>
+<a href="motox3mwinter/" class="game-card">Motox3Mwinter</a>
+<a href="my-friend-pedro/" class="game-card">My Friend Pedro</a>
+<a href="n-gon/" class="game-card">N Gon</a>
+<a href="ninja/" class="game-card">Ninja</a>
+<a href="ninjavsevilcorp/" class="game-card">Ninjavsevilcorp</a>
+<a href="ns-shaft/" class="game-card">Ns Shaft</a>
+<a href="om-bounce/" class="game-card">Om Bounce</a>
+<a href="one-screen-run-2/" class="game-card">One Screen Run 2</a>
+<a href="one-screen-run/" class="game-card">One Screen Run</a>
+<a href="osu/" class="game-card">Osu</a>
+<a href="ovo/" class="game-card">Ovo</a>
+<a href="packabunchas/" class="game-card">Packabunchas</a>
+<a href="pacman-fps/" class="game-card">Pacman Fps</a>
+<a href="pacman/" class="game-card">Pacman</a>
+<a href="pandemic2/" class="game-card">Pandemic2</a>
+<a href="papa-louie/" class="game-card">Papa Louie</a>
+<a href="papas-burgeria/" class="game-card">Papas Burgeria</a>
+<a href="papas-freezeria/" class="game-card">Papas Freezeria</a>
+<a href="papas-hot-doggeria/" class="game-card">Papas Hot Doggeria</a>
+<a href="papas-pancakeria/" class="game-card">Papas Pancakeria</a>
+<a href="papas-pizzeria/" class="game-card">Papas Pizzeria</a>
+<a href="papas-sushiria/" class="game-card">Papas Sushiria</a>
+<a href="papas-wingeria/" class="game-card">Papas Wingeria</a>
+<a href="papasburgeria/" class="game-card">Papasburgeria</a>
+<a href="papaspizzaria/" class="game-card">Papaspizzaria</a>
+<a href="paperio2/" class="game-card">Paperio2</a>
+<a href="papery-planes/" class="game-card">Papery Planes</a>
+<a href="particle-clicker/" class="game-card">Particle Clicker</a>
+<a href="particleclicker/" class="game-card">Particleclicker</a>
+<a href="path-finder/" class="game-card">Path Finder</a>
+<a href="pe-noire/" class="game-card">Pe Noire</a>
+<a href="pikwip/" class="game-card">Pikwip</a>
+<a href="pixel-cave/" class="game-card">Pixel Cave</a>
+<a href="pizzeria-simulator/" class="game-card">Pizzeria Simulator</a>
+<a href="polybranch/" class="game-card">Polybranch</a>
+<a href="popcat-classic/" class="game-card">Popcat Classic</a>
+<a href="portalflash/" class="game-card">Portalflash</a>
+<a href="precision-client/" class="game-card">Precision Client</a>
+<a href="protektor/" class="game-card">Protektor</a>
+<a href="push-the-square/" class="game-card">Push The Square</a>
+<a href="push-your-luck/" class="game-card">Push Your Luck</a>
+<a href="pushback/" class="game-card">Pushback</a>
+<a href="puzzle-ball/" class="game-card">Puzzle Ball</a>
+<a href="pvz-2/" class="game-card">Pvz 2</a>
+<a href="q1k3/" class="game-card">Q1K3</a>
+<a href="racer/" class="game-card">Racer</a>
+<a href="radiusraid/" class="game-card">Radiusraid</a>
+<a href="retro-bowl/" class="game-card">Retro Bowl</a>
+<a href="retrobowl/" class="game-card">Retrobowl</a>
+<a href="retrohaunt/" class="game-card">Retrohaunt</a>
+<a href="rise-of-neon-square/" class="game-card">Rise Of Neon Square</a>
+<a href="roadblocks/" class="game-card">Roadblocks</a>
+<a href="rocking-sky-trip/" class="game-card">Rocking Sky Trip</a>
+<a href="rolling-forests/" class="game-card">Rolling Forests</a>
+<a href="rolly-vortex/" class="game-card">Rolly Vortex</a>
+<a href="rooftop-snipers/" class="game-card">Rooftop Snipers</a>
+<a href="run-3/" class="game-card">Run 3</a>
+<a href="run3/" class="game-card">Run3</a>
+<a href="sand-game/" class="game-card">Sand Game</a>
+<a href="sandboxels/" class="game-card">Sandboxels</a>
+<a href="scrambled-eggs/" class="game-card">Scrambled Eggs</a>
+<a href="scrapmetal/" class="game-card">Scrapmetal</a>
+<a href="senya-and-oscar-2/" class="game-card">Senya And Oscar 2</a>
+<a href="sg/" class="game-card">Sg</a>
+<a href="shadow-world-adventure/" class="game-card">Shadow World Adventure</a>
+<a href="shards/" class="game-card">Shards</a>
+<a href="shift-flash-2/" class="game-card">Shift Flash 2</a>
+<a href="shift-flash/" class="game-card">Shift Flash</a>
+<a href="short-life-2/" class="game-card">Short Life 2</a>
+<a href="short-ride/" class="game-card">Short Ride</a>
+<a href="shuttledeck/" class="game-card">Shuttledeck</a>
+<a href="skyblock/" class="game-card">Skyblock</a>
+<a href="sleepingbeauty/" class="game-card">Sleepingbeauty</a>
+<a href="slice-of-sasha/" class="game-card">Slice Of Sasha</a>
+<a href="slither snake/" class="game-card">Slither Snake</a>
+<a href="slither/" class="game-card">Slither</a>
+<a href="slope-ball/" class="game-card">Slope Ball</a>
+<a href="slope/" class="game-card">Slope</a>
+<a href="slope2/" class="game-card">Slope2</a>
+<a href="sm63/" class="game-card">Sm63</a>
+<a href="sm64/" class="game-card">Sm64</a>
+<a href="smashkarts/" class="game-card">Smashkarts</a>
+<a href="smokingbarrels/" class="game-card">Smokingbarrels</a>
+<a href="snake/" class="game-card">Snake</a>
+<a href="snowbattle/" class="game-card">Snowbattle</a>
+<a href="soldier-legend/" class="game-card">Soldier Legend</a>
+<a href="solitaire/" class="game-card">Solitaire</a>
+<a href="sonic-the-hedgehog/" class="game-card">Sonic The Hedgehog</a>
+<a href="sort-the-court/" class="game-card">Sort The Court</a>
+<a href="soundboard/" class="game-card">Soundboard</a>
+<a href="space-company/" class="game-card">Space Company</a>
+<a href="spacecompany/" class="game-card">Spacecompany</a>
+<a href="spacegarden/" class="game-card">Spacegarden</a>
+<a href="spacehuggers/" class="game-card">Spacehuggers</a>
+<a href="spelunky/" class="game-card">Spelunky</a>
+<a href="ssf/" class="game-card">Ssf</a>
+<a href="stack-bump-3d/" class="game-card">Stack Bump 3D</a>
+<a href="stack/" class="game-card">Stack</a>
+<a href="station-141/" class="game-card">Station 141</a>
+<a href="stealingthediamond/" class="game-card">Stealingthediamond</a>
+<a href="stick-archers-battle/" class="game-card">Stick Archers Battle</a>
+<a href="stickclimb/" class="game-card">Stickclimb</a>
+<a href="stickman-boost/" class="game-card">Stickman Boost</a>
+<a href="stickman-dismount/" class="game-card">Stickman Dismount</a>
+<a href="stickman-epic-battle/" class="game-card">Stickman Epic Battle</a>
+<a href="stickman-golf/" class="game-card">Stickman Golf</a>
+<a href="stickman/" class="game-card">Stickman</a>
+<a href="stickwar/" class="game-card">Stickwar</a>
+<a href="stormthehouse2/" class="game-card">Stormthehouse2</a>
+<a href="subway-surfers-bali/" class="game-card">Subway Surfers Bali</a>
+<a href="subway-surfers/" class="game-card">Subway Surfers</a>
+<a href="super-mario-maker-online/" class="game-card">Super Mario Maker Online</a>
+<a href="super-puffer-fish-3d/" class="game-card">Super Puffer Fish 3D</a>
+<a href="superhero-io/" class="game-card">Superhero Io</a>
+<a href="superhot/" class="game-card">Superhot</a>
+<a href="supermarioconstruct/" class="game-card">Supermarioconstruct</a>
+<a href="swerve/" class="game-card">Swerve</a>
+<a href="synesthesia/" class="game-card">Synesthesia</a>
+<a href="tactical-weapon-pack-2/" class="game-card">Tactical Weapon Pack 2</a>
+<a href="tacticalassasin2/" class="game-card">Tacticalassasin2</a>
+<a href="tail-of-the-dragon/" class="game-card">Tail Of The Dragon</a>
+<a href="tam-indian-truck-simulator-3d/" class="game-card">Tam Indian Truck Simulator 3D</a>
+<a href="tank-trouble-2/" class="game-card">Tank Trouble 2</a>
+<a href="tanuki-sunset/" class="game-card">Tanuki Sunset</a>
+<a href="temple-run-2/" class="game-card">Temple Run 2</a>
+<a href="tetris/" class="game-card">Tetris</a>
+<a href="the-final-earth-2/" class="game-card">The Final Earth 2</a>
+<a href="the-final-earth/" class="game-card">The Final Earth</a>
+<a href="the-impossible-quiz-2/" class="game-card">The Impossible Quiz 2</a>
+<a href="the-impossible-quiz/" class="game-card">The Impossible Quiz</a>
+<a href="the-little-giant/" class="game-card">The Little Giant</a>
+<a href="thebattle/" class="game-card">Thebattle</a>
+<a href="theheist/" class="game-card">Theheist</a>
+<a href="themazeofspacegoblins/" class="game-card">Themazeofspacegoblins</a>
+<a href="there-is-no-game/" class="game-card">There Is No Game</a>
+<a href="thisistheonlylevel/" class="game-card">Thisistheonlylevel</a>
+<a href="time-shooter-3/" class="game-card">Time Shooter 3</a>
+<a href="tiny-fishing/" class="game-card">Tiny Fishing</a>
+<a href="tiny-fragments/" class="game-card">Tiny Fragments</a>
+<a href="tiny-islands/" class="game-card">Tiny Islands</a>
+<a href="topple-adventure/" class="game-card">Topple Adventure</a>
+<a href="tosstheturtle/" class="game-card">Tosstheturtle</a>
+<a href="tough-growth/" class="game-card">Tough Growth</a>
+<a href="towermaster/" class="game-card">Towermaster</a>
+<a href="townscaper/" class="game-card">Townscaper</a>
+<a href="trimps/" class="game-card">Trimps</a>
+<a href="tube-jumpers/" class="game-card">Tube Jumpers</a>
+<a href="tunnel-rush/" class="game-card">Tunnel Rush</a>
+<a href="tunnelz/" class="game-card">Tunnelz</a>
+<a href="tv-static/" class="game-card">Tv Static</a>
+<a href="twitch-tetris/" class="game-card">Twitch Tetris</a>
+<a href="underrun/" class="game-card">Underrun</a>
+<a href="unfold-2/" class="game-card">Unfold 2</a>
+<a href="up-left-out/" class="game-card">Up Left Out</a>
+<a href="veloce/" class="game-card">Veloce</a>
+<a href="vex3/" class="game-card">Vex3</a>
+<a href="vex4/" class="game-card">Vex4</a>
+<a href="vex5/" class="game-card">Vex5</a>
+<a href="vex6/" class="game-card">Vex6</a>
+<a href="vex7/" class="game-card">Vex7</a>
+<a href="waterworks/" class="game-card">Waterworks</a>
+<a href="webretro/" class="game-card">Webretro</a>
+<a href="winter-falling-price/" class="game-card">Winter Falling Price</a>
+<a href="wipo/" class="game-card">Wipo</a>
+<a href="wolf3d/" class="game-card">Wolf3D</a>
+<a href="wordle/" class="game-card">Wordle</a>
+<a href="worlds-hardest-game-2/" class="game-card">Worlds Hardest Game 2</a>
+<a href="worlds-hardest-game/" class="game-card">Worlds Hardest Game</a>
+<a href="x-trial-racing/" class="game-card">X Trial Racing</a>
+<a href="xx142-b2exe/" class="game-card">Xx142 B2Exe</a>
+<a href="yoshifabrication/" class="game-card">Yoshifabrication</a>
+<a href="you-are-bezos/" class="game-card">You Are Bezos</a>
+<a href="zig-zag/" class="game-card">Zig Zag</a>
+<a href="zombocalypse/" class="game-card">Zombocalypse</a>
+<a href="zombs-royale/" class="game-card">Zombs Royale</a>
+    </div>
 </body>
 </html>
