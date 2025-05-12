@@ -48,6 +48,8 @@
     <header>
         <h1>studyisveryimportant</h1>
         <p>Click a game to begin your... study.</p>
+<input type="text" id="searchInput" placeholder="Search games..." style="padding: 10px; font-size: 1rem; width: 80%; max-width: 400px; margin-top: 10px;">
+
     </header>
     <div class="game-container">
         <a href="1/" class="game-card">1</a>
@@ -466,5 +468,19 @@
 <a href="zombocalypse/" class="game-card">Zombocalypse</a>
 <a href="zombs-royale/" class="game-card">Zombs Royale</a>
     </div>
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const gameCards = document.querySelectorAll('.game-card');
+
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        gameCards.forEach(card => {
+            const title = card.textContent.toLowerCase();
+            card.style.display = title.includes(query) ? '' : 'none';
+        });
+    });
+</script>
+
 </body>
 </html>
